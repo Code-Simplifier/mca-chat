@@ -21,6 +21,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
+import { useModal } from "@/hooks/useModalStore";
 
 interface ServerHeaderProps {
   server: ServerWithMembersWithProfiles;
@@ -28,6 +29,8 @@ interface ServerHeaderProps {
 }
 
 const ServerHeader = ({ server, role }: ServerHeaderProps) => {
+  const { onOpen } = useModal();
+
   const isAdmin = role === MemberRole.ADMIN;
   const isModerator = isAdmin || role === MemberRole.MODERATOR;
   return (
@@ -44,7 +47,12 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
         className={`${primary.className} w-56 text-sm text-zinc-500 space-y-[2px]`}
       >
         {isModerator && (
-          <DropdownMenuItem className="text-emerald-700 px-3 py-2 cursor-pointer">
+          <DropdownMenuItem
+            onClick={() => {
+              onOpen("invite", { server });
+            }}
+            className="text-emerald-700 px-3 py-2 cursor-pointer"
+          >
             Invite Members
             <BsPersonFillAdd className="h-4 w-4 ml-auto" />
           </DropdownMenuItem>
