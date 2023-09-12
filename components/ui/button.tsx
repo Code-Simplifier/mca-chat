@@ -11,8 +11,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: `bg-primary text-secondary uppercase w-full hover:bg-tertiary hover:text-white ${bold.className}`,
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        error: `bg-tertiary text-white uppercase w-full hover:bg-tertiary/90 ${bold.className}`,
         outline:
           "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
         secondary:
