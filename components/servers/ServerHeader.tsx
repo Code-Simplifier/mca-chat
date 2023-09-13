@@ -38,21 +38,21 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger className="focus:outline-none" asChild>
         <button
-          className={`${bold.className} uppercase tracking-tight w-full h-12 text-md px-3 flex items-center bg-secondary/80 hover:bg-primary/95 hover:text-secondary transition`}
+          className={`${bold.className} uppercase tracking-tight w-full h-12 text-md px-3 flex items-center bg-primary/95 text-secondary hover:text-white transition`}
         >
           {server.name}
           <IoIosArrowDropdownCircle className="h-6 w-6 ml-auto" />
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className={`${primary.className} w-56 text-sm text-zinc-500 space-y-[2px]`}
+        className={`${primary.className} w-56 text-sm bg-primary border-secondary text-white space-y-[2px]`}
       >
         {isModerator && (
           <DropdownMenuItem
             onClick={() => {
               onOpen("invite", { server });
             }}
-            className="text-emerald-700 px-3 py-2 cursor-pointer"
+            className="text-emerald-300 px-3 py-2 cursor-pointer"
           >
             Invite Members
             <BsPersonFillAdd className="h-4 w-4 ml-auto" />
@@ -85,11 +85,11 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
             <BiGitBranch className="h-4 w-4 ml-auto" />
           </DropdownMenuItem>
         )}
-        {isModerator && <DropdownMenuSeparator />}
+        {isModerator && <DropdownMenuSeparator className="opacity-30" />}
         {isAdmin && (
           <DropdownMenuItem
             onClick={() => onOpen("deleteServer", { server })}
-            className="text-tertiary px-3 py-2 cursor-pointer"
+            className="text-rose-400 px-3 py-2 cursor-pointer"
           >
             Delete Server
             <BsFillTrash3Fill className="h-4 w-4 ml-auto" />
@@ -98,7 +98,7 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
         {!isAdmin && (
           <DropdownMenuItem
             onClick={() => onOpen("leaveServer", { server })}
-            className="text-tertiary px-3 py-2 cursor-pointer"
+            className="text-rose-400 px-3 py-2 cursor-pointer"
           >
             Leave Server
             <IoExit className="h-4 w-4 ml-auto" />

@@ -55,7 +55,7 @@ const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
   )?.role;
 
   return (
-    <div className="flex flex-col w-full h-full bg-secondary/50 text-black">
+    <div className="flex flex-col w-full h-full bg-primary/40 text-secondary">
       <ServerHeader server={server} role={role} />
     </div>
   );

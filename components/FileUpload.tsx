@@ -34,9 +34,10 @@ export const FileUpload = ({ onChange, value, endpoint }: FileUploadProps) => {
   return (
     <UploadDropzone
       appearance={{
-        label: `text-primary tracking-wide ${primary.className}`,
+        label: `text-tertiary hover:text-secondary tracking-wide ${primary.className}`,
         allowedContent: `text-zinc-400 uppercase mt-2 ${bold.className}`,
-        container: "border-dashed border-2 px-4 py-2 border-primary",
+        container: "border-dashed border-2 px-4 py-2 border-tertiary",
+        button: "bg-tertiary",
       }}
       endpoint={endpoint}
       onClientUploadComplete={(res) => {

@@ -76,6 +76,6 @@ body :root {
     @apply border-border;
   }
   body {
-    @apply bg-[#d9dadb] text-foreground;
+    @apply bg-dark text-white;
   }
 }

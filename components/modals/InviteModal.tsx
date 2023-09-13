@@ -58,11 +58,11 @@ export const InviteModal = () => {
   return (
     <Dialog open={isModalOpen} onOpenChange={onClose}>
       <DialogContent
-        className={`bg-white text-black rounded-lg overflow-hidden ${primary.className}`}
+        className={`bg-primary text-white rounded-lg overflow-hidden ${primary.className}`}
       >
         <DialogHeader className="pt-6 px-6">
           <DialogTitle
-            className={`text-3xl text-primary text-center ${bold.className}`}
+            className={`text-3xl text-secondary text-center ${bold.className}`}
           >
             Invite Members
           </DialogTitle>
@@ -76,7 +76,7 @@ export const InviteModal = () => {
           <div className="flex mt-2 items-center gap-x-2">
             <Input
               disabled={isLoading}
-              className={`bg-zinc-300/50 text-zinc-500 ${code.className} border-0 focus-visible:ring-0 focus-visible:ring-offset-0`}
+              className={`bg-zinc-300/50 text-white ${code.className} border-0 focus-visible:ring-0 focus-visible:ring-offset-0`}
               value={inviteUrl}
             />
             <Button
@@ -92,7 +92,7 @@ export const InviteModal = () => {
             onClick={onNew}
             disabled={isLoading}
             variant="link"
-            className="mt-4"
+            className="mt-4 text-secondary"
           >
             Generate a new link
             <FiRefreshCcw className="h-4 w-4 ml-2" />

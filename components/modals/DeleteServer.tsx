@@ -39,15 +39,15 @@ export const DeleteServerModal = () => {
   return (
     <Dialog open={isModalOpen} onOpenChange={onClose}>
       <DialogContent
-        className={`bg-white text-black rounded-lg overflow-hidden ${primary.className}`}
+        className={`bg-primary rounded-lg overflow-hidden ${primary.className}`}
       >
         <DialogHeader className="pt-6 px-6">
           <DialogTitle
-            className={`text-3xl text-primary text-center ${bold.className}`}
+            className={`text-3xl text-secondary text-center ${bold.className}`}
           >
             Delete Server
           </DialogTitle>
-          <DialogDescription className="text-center">
+          <DialogDescription className="text-center text-zinc-400">
             If you delete{" "}
             <span className={`uppercase text-secondary ${bold.className} `}>
               {server?.name}
@@ -55,7 +55,7 @@ export const DeleteServerModal = () => {
             , all data will be cleared out.
           </DialogDescription>
         </DialogHeader>
-        <DialogFooter className="bg-gray-100 px-6 py-4">
+        <DialogFooter className=" px-6 py-4">
           <div className="flex items-center justify-between w-full">
             <Button
               variant="error"

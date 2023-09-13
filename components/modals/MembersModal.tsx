@@ -43,8 +43,8 @@ import { useRouter } from "next/navigation";
 
 const roleIconMap = {
   GUEST: null,
-  MODERATOR: <FaChalkboardTeacher className="h-6 w-6 text-secondary" />,
-  ADMIN: <BsShieldFillCheck className="h-6 w-6 text-tertiary" />,
+  MODERATOR: <FaChalkboardTeacher className="h-6 w-6 text-rose-400" />,
+  ADMIN: <BsShieldFillCheck className="h-6 w-6 text-secondary" />,
 };
 
 export const MembersModal = () => {
@@ -97,11 +97,11 @@ export const MembersModal = () => {
   return (
     <Dialog open={isModalOpen} onOpenChange={onClose}>
       <DialogContent
-        className={`bg-white text-black rounded-lg overflow-hidden ${primary.className}`}
+        className={`bg-primary text-white rounded-lg overflow-hidden ${primary.className}`}
       >
         <DialogHeader className="pt-6 px-6">
           <DialogTitle
-            className={`text-3xl text-primary text-center ${bold.className}`}
+            className={`text-3xl text-secondary text-center ${bold.className}`}
           >
             Manage Members
           </DialogTitle>
@@ -130,16 +130,19 @@ export const MembersModal = () => {
                   <div className="ml-auto">
                     <DropdownMenu>
                       <DropdownMenuTrigger>
-                        <BsThreeDotsVertical className="text-primary h-5 w-5" />
+                        <BsThreeDotsVertical className="h-5 w-5" />
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent side="left">
+                      <DropdownMenuContent
+                        side="left"
+                        className="bg-primary text-zinc-400"
+                      >
                         <DropdownMenuSub>
-                          <DropdownMenuSubTrigger className="flex items-center text-zinc-500 hover:text-black">
+                          <DropdownMenuSubTrigger className="flex items-center bg-primary">
                             <BsShieldFillExclamation className="h-4 w-4 mr-2" />
                             <span>Role</span>
                           </DropdownMenuSubTrigger>
                           <DropdownMenuPortal>
-                            <DropdownMenuSubContent>
+                            <DropdownMenuSubContent className="bg-primary text-white">
                               <DropdownMenuItem
                                 onClick={() => onRoleChange(member.id, "GUEST")}
                               >
@@ -157,7 +160,7 @@ export const MembersModal = () => {
                                 <FaChalkboardTeacher className="h-4 w-4 mr-2" />
                                 Moderator
                                 {member.role === "MODERATOR" && (
-                                  <BsCheck2All className="h-4 w-4 ml-auto" />
+                                  <BsCheck2All className="h-4 w-4 ml-2" />
                                 )}
                               </DropdownMenuItem>
                             </DropdownMenuSubContent>
@@ -166,7 +169,7 @@ export const MembersModal = () => {
                         <DropdownMenuSeparator />
                         <DropdownMenuItem
                           onClick={() => onKick(member.id)}
-                          className="text-tertiary"
+                          className="text-rose-400"
                         >
                           <IoExit className="h-4 w-4 mr-2" />
                           Kick

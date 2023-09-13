@@ -10,8 +10,8 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: `bg-primary text-secondary uppercase w-full hover:bg-tertiary hover:text-white ${bold.className}`,
-        error: `bg-tertiary text-white uppercase w-full hover:bg-tertiary/90 ${bold.className}`,
+        default: `bg-tertiary text-secondary uppercase w-full hover:bg-tertiary/60 hover:text-white ${bold.className}`,
+        error: `bg-rose-400 text-white uppercase w-full hover:bg-rose-500 ${bold.className}`,
         outline:
           "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
         secondary:

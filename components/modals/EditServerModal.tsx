@@ -82,11 +82,11 @@ export const EditServerModal = () => {
   return (
     <Dialog open={isModalOpen} onOpenChange={handleClose}>
       <DialogContent
-        className={`bg-white text-black rounded-lg overflow-hidden ${primary.className}`}
+        className={`bg-primary text-white rounded-lg overflow-hidden ${primary.className}`}
       >
         <DialogHeader className="pt-6 px-6">
           <DialogTitle
-            className={`text-3xl text-primary text-center ${bold.className}`}
+            className={`text-3xl text-secondary text-center ${bold.className}`}
           >
             Edit your server
           </DialogTitle>
@@ -124,7 +124,7 @@ export const EditServerModal = () => {
                     <FormControl>
                       <Input
                         disabled={isLoading}
-                        className="bg-zinc-300/50 text-primary border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                        className="bg-zinc-300/50 border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                         placeholder=""
                         {...field}
                       />
