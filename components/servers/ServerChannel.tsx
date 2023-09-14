@@ -10,6 +10,7 @@ import { HiLockClosed } from "react-icons/hi";
 
 import { ActionTooltip } from "@/components/ActionTooltip";
 import { Edit, Trash } from "lucide-react";
+import { useModal } from "@/hooks/useModalStore";
 
 interface ServerChannelProps {
   channel: Channel;
@@ -30,6 +31,7 @@ export const ServerChannel = ({
 }: ServerChannelProps) => {
   const router = useRouter();
   const params = useParams();
+  const { onOpen } = useModal();
   const Icon = iconMap[channel.type];
   return (
     <button
@@ -55,7 +57,10 @@ export const ServerChannel = ({
             <Edit className="hidden group-hover:block w-4 h-4 text-zinc-400" />
           </ActionTooltip>
           <ActionTooltip label="Delete" side="top">
-            <Trash className="hidden group-hover:block w-4 h-4 text-zinc-400 transition" />
+            <Trash
+              onClick={() => onOpen("deleteChannel", { server, channel })}
+              className="hidden group-hover:block w-4 h-4 text-zinc-400 transition"
+            />
           </ActionTooltip>
         </div>
       )}

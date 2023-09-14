@@ -25,7 +25,7 @@ export const ServerMember = ({ member, server }: ServerMemberProps) => {
   return (
     <button
       className={cn(
-        "group px-2 py-2 rounded-md flex items-center gap-x-2 w-full hover:bg-zinc-700/50 transition",
+        "group px-2 py-2 rounded-md flex items-center gap-x-2 w-full hover:bg-tertiary transition",
         params?.memberId === member.id && "bg-zinc-700"
       )}
     >
@@ -35,7 +35,7 @@ export const ServerMember = ({ member, server }: ServerMemberProps) => {
       />
       <p
         className={cn(
-          "text-sm text-zinc-400 group-hover:text-zinc-500 transition",
+          "text-sm text-zinc-400 group-hover:text-white transition",
           params?.channelId === member.id &&
             "text-secondary group-hover:text-white"
         )}
