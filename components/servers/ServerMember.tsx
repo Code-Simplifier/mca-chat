@@ -22,11 +22,17 @@ export const ServerMember = ({ member, server }: ServerMemberProps) => {
   const params = useParams();
   const router = useRouter();
   const icon = roleIconMap[member.role];
+
+  const onClick = () => {
+    router.push(`/servers/${params?.serverId}/conversations/${member.id}`);
+  };
+
   return (
     <button
+      onClick={onClick}
       className={cn(
         "group px-2 py-2 rounded-md flex items-center gap-x-2 w-full hover:bg-tertiary transition",
-        params?.memberId === member.id && "bg-zinc-700"
+        params?.memberId === member.id && "border border-secondary fill-sky-300"
       )}
     >
       <UserAvatar
@@ -36,8 +42,7 @@ export const ServerMember = ({ member, server }: ServerMemberProps) => {
       <p
         className={cn(
           "text-sm text-zinc-400 group-hover:text-white transition",
-          params?.channelId === member.id &&
-            "text-secondary group-hover:text-white"
+          params?.memberId === member.id && "group-hover:text-white"
         )}
       >
         {member.profile.name}
