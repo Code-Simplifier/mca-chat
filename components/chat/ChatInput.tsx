@@ -1,7 +1,6 @@
 "use client";
 
 import { AiOutlinePlus } from "react-icons/ai";
-import { FiSmile } from "react-icons/fi";
 
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -14,6 +13,9 @@ import { Input } from "@/components/ui/input";
 import { Smile } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { primary } from "@/app/fonts";
+import { useModal } from "@/hooks/useModalStore";
+import { EmojiPicker } from "@/components/EmojiPicker";
+import { useRouter } from "next/navigation";
 
 interface ChatInputProps {
   name: string;
@@ -27,6 +29,9 @@ const formSchema = z.object({
 });
 
 const ChatInput = ({ name, apiUrl, type, query }: ChatInputProps) => {
+  const router = useRouter();
+
+  const { onOpen } = useModal();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -43,6 +48,8 @@ const ChatInput = ({ name, apiUrl, type, query }: ChatInputProps) => {
       });
 
       await axios.post(url, values);
+      form.reset();
+      router.refresh();
     } catch (error) {
       console.log(error);
     }
@@ -60,7 +67,7 @@ const ChatInput = ({ name, apiUrl, type, query }: ChatInputProps) => {
                 <div className="relative p-4 pb-6">
                   <button
                     type="button"
-                    onClick={() => {}}
+                    onClick={() => onOpen("messageFile", { apiUrl, query })}
                     className="absolute top-7 left-8 h-[24px] w-[24px] bg-zinc-400 hover:bg-zinc-200 transition rounded-full flex items-center justify-center"
                   >
                     <AiOutlinePlus className="text-primary" />
@@ -77,7 +84,11 @@ const ChatInput = ({ name, apiUrl, type, query }: ChatInputProps) => {
                     )}
                   />
                   <div className="absolute top-7 right-8">
-                    <Smile className="text-zinc-400" />
+                    <EmojiPicker
+                      onChange={(emoji: string) =>
+                        field.onChange(`${field.value} ${emoji}`)
+                      }
+                    />
                   </div>
                 </div>
               </FormControl>

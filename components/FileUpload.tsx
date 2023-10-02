@@ -7,6 +7,7 @@ import { UploadDropzone } from "@/lib/uploadthing";
 
 import "@uploadthing/react/styles.css";
 import { RxCross2 } from "react-icons/rx";
+import { FileIcon } from "lucide-react";
 
 interface FileUploadProps {
   onChange: (url?: string) => void;
@@ -25,6 +26,29 @@ export const FileUpload = ({ onChange, value, endpoint }: FileUploadProps) => {
           onClick={() => onChange("")}
           type="button"
           className="bg-tertiary text-white p-1 rounded-full absolute top-0 right-0 shadow-sm"
+        >
+          <RxCross2 className="h-4 w-4" />
+        </button>
+      </div>
+    );
+  }
+
+  if (value && fileType === "pdf") {
+    return (
+      <div className="relative flex items-center p-2 mt-2 rounded-md">
+        <FileIcon className="h-10 w-10 fill-primary stroke-secondary" />
+        <a
+          href={value}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ml-2 text-sm text-secondary hover:underline"
+        >
+          {value}
+        </a>
+        <button
+          onClick={() => onChange("")}
+          type="button"
+          className="bg-tertiary text-white p-1 rounded-full absolute -top-2 -right-2 shadow-sm"
         >
           <RxCross2 className="h-4 w-4" />
         </button>
