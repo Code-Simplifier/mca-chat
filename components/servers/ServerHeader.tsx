@@ -38,7 +38,7 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger className="focus:outline-none" asChild>
         <button
-          className={`${bold.className} uppercase tracking-tight w-full h-12 text-md px-3 flex items-center bg-primary/95 text-secondary hover:text-white transition`}
+          className={`${bold.className} uppercase tracking-tight w-full h-12 border-b-2 border-secondary text-md px-3 flex items-center bg-primary/95 text-secondary hover:text-white transition`}
         >
           {server.name}
           <IoIosArrowDropdownCircle className="h-6 w-6 ml-auto" />

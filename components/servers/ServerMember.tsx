@@ -6,6 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 import { BsShieldFillCheck } from "react-icons/bs";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { UserAvatar } from "@/components/UserAvatar";
+import { primary } from "@/app/fonts";
 
 interface ServerMemberProps {
   member: Member & { profile: Profile };
