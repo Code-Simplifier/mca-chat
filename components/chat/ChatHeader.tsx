@@ -1,6 +1,7 @@
 import { FaSlackHash } from "react-icons/fa";
 import { primary } from "@/app/fonts";
 import { MobileToggle } from "../MobileToggle";
+import { UserAvatar } from "../UserAvatar";
 
 interface ChatHeaderProps {
   serverId: string;
@@ -15,6 +16,9 @@ const ChatHeader = ({ serverId, name, type, imgUrl }: ChatHeaderProps) => {
       <MobileToggle serverId={serverId} />
       {type === "channel" && (
         <FaSlackHash className="h-5 w-5 mr-2 text-zinc-300" />
+      )}
+      {type === "conversation" && (
+        <UserAvatar src={imgUrl} className="h-8 w-8 md:h-8 md:w-8 mr-2" />
       )}
       <p className={primary.className}>{name}</p>
     </div>
