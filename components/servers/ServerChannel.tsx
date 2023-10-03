@@ -56,7 +56,7 @@ export const ServerChannel = ({
         className={cn(
           "flex-shrink-0 h-5 w-5 text-zinc-300",
           params?.channelId === channel.id &&
-            "text-primary group-hover:text-white"
+            "text-primary group-hover:text-white animate-pulse"
         )}
       />
       <p
