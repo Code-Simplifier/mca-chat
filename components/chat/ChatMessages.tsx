@@ -1,6 +1,7 @@
 "use client";
 
 import { Fragment } from "react";
+import { format } from "date-fns";
 
 import { Member, Message, Profile } from "@prisma/client";
 import { useChatQuery } from "@/hooks/useChatQuery";
@@ -25,6 +26,8 @@ interface ChatMessagesProps {
   paramKey: "channelId" | "conversationId";
   type: "channel" | "conversation";
 }
+
+const DATE_FORMAT = "MMM d,yy @ HH:mm";
 
 type MessageWithMemberAndProfile = Message & {
   member: Member & { profile: Profile };
@@ -74,7 +77,19 @@ const ChatMessages = ({
         {data?.pages?.map((batch, index) => (
           <Fragment key={index}>
             {batch.items.map((message: MessageWithMemberAndProfile) => (
-              <ChatItem />
+              <ChatItem
+                currentMember={member}
+                socketUrl={socketUrl}
+                socketQuery={socketQuery}
+                key={message.id}
+                id={message.id}
+                member={message.member}
+                content={message.content}
+                fileUrl={message.fileUrl}
+                deleted={message.deleted}
+                isUpdated={message.updatedAt !== message.createdAt}
+                timestamp={format(new Date(message.createdAt), DATE_FORMAT)}
+              />
             ))}
           </Fragment>
         ))}
