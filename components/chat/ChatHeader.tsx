@@ -3,6 +3,7 @@ import { primary } from "@/app/fonts";
 import { MobileToggle } from "../MobileToggle";
 import { UserAvatar } from "../UserAvatar";
 import { SocketIndicator } from "@/components/SocketIndicator";
+import { ChatVideoButton } from "@/components/chat/ChatVideo";
 
 interface ChatHeaderProps {
   serverId: string;
@@ -23,6 +24,7 @@ const ChatHeader = ({ serverId, name, type, imgUrl }: ChatHeaderProps) => {
       )}
       <p className={primary.className}>{name}</p>
       <div className="ml-auto flex items-center">
+        {type === "conversation" && <ChatVideoButton />}
         <SocketIndicator />
       </div>
     </div>
