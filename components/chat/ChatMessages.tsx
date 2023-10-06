@@ -14,6 +14,7 @@ import { primary } from "@/app/fonts";
 
 import ChatWelcome from "@/components/chat/ChatWelcome";
 import ChatItem from "@/components/chat/ChatItem";
+import { useChatSocket } from "@/hooks/useChatSocket";
 
 interface ChatMessagesProps {
   name: string;
@@ -45,9 +46,13 @@ const ChatMessages = ({
   type,
 }: ChatMessagesProps) => {
   const queryKey = `chat:${chatId}`;
+  const addKey = `chat:${chatId}:messages`;
+  const updateKey = `chat:${chatId}:messages:update`;
 
   const { data, fetchNextPage, isFetchingNextPage, hasNextPage, status } =
     useChatQuery({ queryKey, apiUrl, paramKey, paramValue });
+
+  useChatSocket({ queryKey, addKey, updateKey });
 
   if (status === "loading") {
     return (
